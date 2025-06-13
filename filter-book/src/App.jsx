@@ -99,12 +99,16 @@ class Input extends Component {
 
   render() {
     return (
-      <input
-        type="text"
-        placeholder={this.props.placeholder || "Add a new task"}
-        value={this.state.value}
-        onChange={this.handleChange}
-      />
+      <div className="input-field">
+        <input
+          type="text"
+          placeholder={
+            this.props.placeholder || "Find by title, author or year"
+          }
+          value={this.state.value}
+          onChange={this.handleChange}
+        />
+      </div>
     );
   }
 }
@@ -130,11 +134,13 @@ class Select extends Component {
 
   render() {
     return (
-      <select onChange={this.props.setOption}>
-        {this.props.options.map((o, i) => (
-          <Option option={o} key={i} />
-        ))}
-      </select>
+      <div className="select-field">
+        <select onChange={this.props.setOption}>
+          {this.props.options.map((o, i) => (
+            <Option option={o} key={i} />
+          ))}
+        </select>
+      </div>
     );
   }
 }
@@ -266,7 +272,7 @@ class BookCollection extends Component {
     return (
       <div>
         <div className="search-books">
-          <h2>Search Books</h2>
+          <h1>Search Books</h1>
           <Input changeSearchKey={this.changeKey} />
           <Select
             options={this.state.header}
