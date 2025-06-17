@@ -5,13 +5,12 @@ import { TodoItems } from "./TodoItems.jsx";
 const DeleteTodo = ({ deleteHandler }) => {
   return (
     <div className="delete-todo">
-      <button type="reset" onClick={deleteHandler}>
-        <img
-          src="./src/assets/delete-icon.png"
-          alt="delete-icon"
-          style={{ height: "30px" }}
-        />
-      </button>
+      <img
+        src="./src/assets/square_cross.png"
+        alt="delete-icon"
+        style={{ height: "30px" }}
+        onClick={deleteHandler}
+      />
     </div>
   );
 };

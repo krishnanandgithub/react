@@ -1,22 +1,20 @@
-import { createContext, useEffect, useReducer, useState } from "react";
+import { useEffect, useReducer } from "react";
 import { Todo } from "./Todo.jsx";
 import { ourReducer } from "./ourReducer.jsx";
 import "./App.css";
 import { TodoInput } from "./TodoInput.jsx";
 
-export const TodosContext = createContext(null);
-
 const Todos = () => {
-  
   useEffect(() => {
     fetch("http://localhost:8000/api/todos")
-    .then((d) => d.json())
-    .then((d) => {
-      dispatch({ type: "init-todos", todoApp: d });
-    });
+      .then((d) => d.json())
+      .then((d) => {
+        dispatch({ type: "init-todos", todoApp: d });
+      });
   }, []);
-  
+
   const [state, dispatch] = useReducer(ourReducer, { todos: [] });
+
   return (
     <div className="todos">
       <h1>Create Your Todos</h1>

@@ -14,13 +14,12 @@ export const TodoItem = ({ task, id, done, toggle, removeTask }) => {
         {task}
       </div>
       <div className="remove-button">
-        <button type="reset" onClick={() => removeTask(id)}>
-          <img
-            src="./src/assets/delete-icon.png"
-            alt="delete-icon"
-            style={{ height: "20px" }}
-          />
-        </button>
+        <img
+          onClick={() => removeTask(id)}
+          src="./src/assets/delete-icon.png"
+          alt="delete-icon"
+          style={{ height: "20px", margin: "7px 5px 0px 0px" }}
+        />
       </div>
     </div>
   );
