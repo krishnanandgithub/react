@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from "react";
 import { Todo } from "./Todo.jsx";
-import { ourReducer } from "./ourReducer.jsx";
+import { ourReducer } from "./state/ourReducer.jsx";
 import "./App.css";
 import { TodoInput } from "./TodoInput.jsx";
 
