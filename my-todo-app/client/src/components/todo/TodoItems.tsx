@@ -1,6 +1,8 @@
+import React from "react";
 import { TodoItem } from "./TodoItem.jsx";
+import { TodoTask } from "../../model/types.js";
 
-export const TodoItems = ({ items, toggle, removeTask }) => {
+export const TodoItems :React.FC<{items:TodoTask[],toggle:(id:number)=>void, removeTask:(id:number)=>void}>= ({ items, toggle, removeTask }) => {
   return (
     <div className="todo-items">
       {items.map(({ task, id, done }) => (

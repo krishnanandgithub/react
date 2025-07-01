@@ -1,4 +1,7 @@
-const toggleTask = (state, { taskId, todoId }) => {
+import Todos from "../components/todo/Class_Based_Component";
+import { Action, State } from "../model/types";
+
+const toggleTask = (state: State, { taskId, todoId }: Action) => {
   const todos = state.todos.map((todo) => {
     if (todo.id === todoId) {
       return {
@@ -20,7 +23,7 @@ const toggleTask = (state, { taskId, todoId }) => {
   return { ...state, todos };
 };
 
-const addTasks = (state, { todoId, task }) => {
+const addTasks = (state: State, { todoId, task }: Action): State => {
   const todos = state.todos.map((todo) => {
     if (todo.id === todoId) {
       return {
@@ -35,21 +38,21 @@ const addTasks = (state, { todoId, task }) => {
   return { ...state, todos };
 };
 
-const addTodo = (state, { todo }) => {
+const addTodo = (state: State, { title }: Action): State => {
   return {
     ...state,
-    todos: [...state.todos, { id: Date.now(), title: todo, tasks: [] }],
+    todos: [...state.todos, { id: Date.now(), title, tasks: [] }],
   };
 };
 
-const deleteTodo = (state, { todoId }) => {
+const deleteTodo = (state: State, { todoId }: Action) => {
   return {
     ...state,
     todos: [...state.todos.filter(({ id }) => id !== todoId)],
   };
 };
 
-const removeTask = (state, { todoId, taskId }) => {
+const removeTask = (state: State, { todoId, taskId }: Action) => {
   const todos = state.todos.map((todo) => {
     if (todo.id === todoId) {
       return {
@@ -64,7 +67,7 @@ const removeTask = (state, { todoId, taskId }) => {
   return { ...state, todos };
 };
 
-export const ourReducer = (state, action) => {
+export const ourReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case "init-todos":
       return { ...state, ...action.todoApp };

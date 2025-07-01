@@ -1,21 +1,11 @@
 import { TodoHeading } from "./TodoHeading.jsx";
 import { TodoInput } from "./TodoInput.jsx";
 import { TodoItems } from "./TodoItems.jsx";
+import { DeleteTodo } from "./DeleteTodo.jsx";
+import React from "react";
+import { Action, State, TodoList } from "../../model/types.js";
 
-const DeleteTodo = ({ deleteHandler }) => {
-  return (
-    <div className="delete-todo">
-      <img
-        src="./src/assets/square_cross.png"
-        alt="delete-icon"
-        style={{ height: "30px" }}
-        onClick={deleteHandler}
-      />
-    </div>
-  );
-};
-
-export const Todo = ({ todo, dispatch }) => {
+export const Todo:React.FC<{todo:TodoList, dispatch:React.Dispatch<Action>}> = ({ todo, dispatch }) => {
   return (
     <div className="todo-app">
       <div className="todo-header">
@@ -33,10 +23,10 @@ export const Todo = ({ todo, dispatch }) => {
       />
       <TodoItems
         items={todo.tasks}
-        removeTask={(id) =>
+        removeTask={(id:number) =>
           dispatch({ type: "remove-task", taskId: id, todoId: todo.id })
         }
-        toggle={(id) =>
+        toggle={(id:number) =>
           dispatch({ type: "toggle-task", taskId: id, todoId: todo.id })
         }
       />
